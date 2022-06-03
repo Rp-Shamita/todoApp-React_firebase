@@ -9,10 +9,10 @@ export default function SignIn(props){
     const navigate = useNavigate();
     function handleSignIn(){
         signInWithPopup(auth, provider).then((res) => {
-            localStorage.setItem("name", res.user.displayName);
-            localStorage.setItem("profile", res.user.photoURL);
-            localStorage.setItem("uid", res.user.uid);
-            navigate('/todo');
+            
+            if(res.user){
+                navigate('/todo');
+            }
         })
         .catch((error) => {
             console.log(error)
